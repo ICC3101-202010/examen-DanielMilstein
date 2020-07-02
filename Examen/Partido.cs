@@ -71,19 +71,26 @@ namespace Examen
         {
             if (PartidoValido)
             {
+                string winner = "";
                 Random r = new Random();
                 int golesE1, golesE2;
 
+                golesE1 = r.Next(10);
+                golesE2 = r.Next(10);
+                if (golesE1 > golesE2) { winner = Equipo1.GetNombre; }
+                else if (golesE1 < golesE2) { winner = Equipo2.GetNombre; }
+                else if (golesE1 == golesE2)
+                {
+                    Resultado = $"{Equipo1.GetNombre} {golesE1} - {golesE2} {Equipo2.GetNombre}. Empate.";
+                    return;
+                }
 
-
-
-
-                string winner = "";
-                Resultado = $"{Equipo1.GetNombre} 0 - 0 {Equipo2.GetNombre}. Gana equipo {winner}";
+                
+                Resultado = $"{Equipo1.GetNombre} {golesE1} - {golesE2} {Equipo2.GetNombre}. Gana equipo {winner}!";
             }
             else
             {
-                Console.WriteLine("Partido invalido. Los equipos no pueden ser de una categoria distinta (Nacional/Liga)");
+                Resultado = "Partido invalido. Los equipos no pueden ser de una categoria distinta (Nacional/Liga).";
             }
         }
     }

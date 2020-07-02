@@ -3,7 +3,7 @@ namespace Examen
 {
     public class Jugador : Persona
     {
-        private int NdeCamiseta;
+        private int NdeCamiseta; //Numero entre 1 y 99.
         private int PuntosAtaque;
         private int PuntosDefensa;
 

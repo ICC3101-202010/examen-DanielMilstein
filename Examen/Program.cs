@@ -6,7 +6,9 @@ namespace Examen
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string a = $"$1000";
+
+            Console.WriteLine(a);
         }
     }
 }

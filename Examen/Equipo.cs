@@ -120,19 +120,36 @@ namespace Examen
             Console.WriteLine($"Nombre del equipo: {Nombre}.");
 
             string tipo;
-            if (Nacional) { tipo = "Equipo Nacional."; }
+            if (Nacional) { tipo = $"Equipo Nacional de {Nombre}."; }
             else { tipo = "Equipo de Liga."; }
 
             Console.WriteLine(tipo);
-            Console.WriteLine($"Entrenador: {Coach}");
-            Console.WriteLine($"Medico: {Medic}");
+            Console.WriteLine($"Entrenador: {Coach}, {Coach.GetTactica} puntos de tactica.");
+            Console.WriteLine($"Medico: {Medic}, {Medic.GetExperiencia} puntos de experiencia.");
             Console.WriteLine("JUGADORES");
+            Console.WriteLine();
+            string arg0, arg1, arg2, arg3, arg4, arg5, arg6;
+            arg0 = "N˚";
+            arg1 = "Nombre"; 
+            arg2 = "Edad";
+            arg3 = "Nacion";
+            arg4 = "Sueldo";
+            arg5 = "Ataque";
+            arg6 = "Defensa";
 
+            Console.WriteLine(String.Format("|{0,2}|{1,15}|{2,5}|{3,10}|{4,10}|{5,6}|{6,7}|", arg0, arg1, arg2, arg3, arg4, arg5, arg6));
             if (Jugadores.Count > 0)
             {
                 foreach (Jugador item in Jugadores)
                 {
-                    Console.WriteLine($"");
+                    arg0 = item.GetNdeCamiseta.ToString();
+                    arg1 = item.GetNombre;
+                    arg2 = item.GetEdad.ToString();
+                    arg3 = item.GetNacion;
+                    arg4 =  $"${item.GetSueldo}";
+                    arg5 = item.GetAtaque.ToString();
+                    arg6 = item.GetDefensa.ToString();
+                    Console.WriteLine(String.Format("|{0,5}|{1,5}|{2,5}|{3,5}|", arg0, arg1, arg2, arg3, arg4, arg5, arg6));
                 }
             }
         }
