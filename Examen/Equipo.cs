@@ -34,6 +34,8 @@ namespace Examen
         }
         public string GetNombre { get { return Nombre; } }
         public bool GetNacional { get { return Nacional; } }
+        public Entrenador GetEntrenador { get { return Coach; } }
+        public List<Jugador> GetJugadores { get { return Jugadores; } }
 
         public void AddJugador(Jugador j)
         {
@@ -45,7 +47,7 @@ namespace Examen
             Random r = new Random();
             if (JugadorValido(j))
             {
-                int camiseta;
+                int camiseta = 1;
                 try
                 {
                     camiseta = j.GetNdeCamiseta;
@@ -84,6 +86,10 @@ namespace Examen
                     j.SetNdeCamiseta = camiseta;
                     Jugadores.Add(j);
                 }
+            }
+            else
+            {
+                Console.WriteLine($"Jugador {j.GetNombre} no es valido para este equipo.");
             }
         }
 
@@ -124,8 +130,8 @@ namespace Examen
             else { tipo = "Equipo de Liga."; }
 
             Console.WriteLine(tipo);
-            Console.WriteLine($"Entrenador: {Coach}, {Coach.GetTactica} puntos de tactica.");
-            Console.WriteLine($"Medico: {Medic}, {Medic.GetExperiencia} puntos de experiencia.");
+            Console.WriteLine($"Entrenador: {Coach.GetNombre}, {Coach.GetTactica} puntos de tactica.");
+            Console.WriteLine($"Medico: {Medic.GetNombre}, {Medic.GetExperiencia} puntos de experiencia.");
             Console.WriteLine("JUGADORES");
             Console.WriteLine();
             string arg0, arg1, arg2, arg3, arg4, arg5, arg6;
@@ -137,7 +143,7 @@ namespace Examen
             arg5 = "Ataque";
             arg6 = "Defensa";
 
-            Console.WriteLine(String.Format("|{0,2}|{1,15}|{2,5}|{3,10}|{4,10}|{5,6}|{6,7}|", arg0, arg1, arg2, arg3, arg4, arg5, arg6));
+            Console.WriteLine(String.Format("|{0,-2}|{1,-15}|{2,-5}|{3,-10}|{4,-10}|{5,-6}|{6,-7}|", arg0, arg1, arg2, arg3, arg4, arg5, arg6));
             if (Jugadores.Count > 0)
             {
                 foreach (Jugador item in Jugadores)
@@ -149,9 +155,11 @@ namespace Examen
                     arg4 =  $"${item.GetSueldo}";
                     arg5 = item.GetAtaque.ToString();
                     arg6 = item.GetDefensa.ToString();
-                    Console.WriteLine(String.Format("|{0,5}|{1,5}|{2,5}|{3,5}|", arg0, arg1, arg2, arg3, arg4, arg5, arg6));
+                    Console.WriteLine(String.Format("|{0,-2}|{1,-15}|{2,-5}|{3,-10}|{4,-10}|{5,-6}|{6,-7}|", arg0, arg1, arg2, arg3, arg4, arg5, arg6));
                 }
             }
         }
+
+        
     }
 }

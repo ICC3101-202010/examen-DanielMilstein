@@ -93,5 +93,10 @@ namespace Examen
                 Resultado = "Partido invalido. Los equipos no pueden ser de una categoria distinta (Nacional/Liga).";
             }
         }
+
+        public void OnPedirCambio()
+        {
+            //Pausa Simular()
+        }
     }
 }

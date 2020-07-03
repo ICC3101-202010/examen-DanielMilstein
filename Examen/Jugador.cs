@@ -23,11 +23,41 @@ namespace Examen
         public int GetAtaque { get { return PuntosAtaque; } }
         public int GetDefensa { get { return PuntosDefensa; } }
 
-        public void JugarEnCancha()
+        public void JugarEnCancha(Partido partido)
         {
+            Random r = new Random();
+            int probabilidad = r.Next(1, 101);
+            //probabilidad = 50; //test
+            if (probabilidad == 50)
+            {
+                OnLesionado(partido);
+            }
             return;
         }
 
 
+        
+        public event EventHandler<LesionEventArgs> Lesionado;
+
+        protected virtual void OnLesionado(Partido partido)
+        {
+            if (Lesionado != null)
+            {
+                Equipo equipo;
+
+                if (partido.GetEq1.GetJugadores.Contains(this))
+                {
+                    equipo = partido.GetEq1;
+                }
+                else
+                {
+                    equipo = partido.GetEq2;
+                }
+
+                Entrenador coach = equipo.GetEntrenador;
+
+                Lesionado(this, new LesionEventArgs() { Match = partido , Coach = coach, Team = equipo}); ;
+            }
+        }
     }
 }
